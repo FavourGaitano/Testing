@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "start:build": "tsc -w",
     "start:run": "nodemon dist/server.js",
     "start": "concurrently npm:start:*"
@@ -33,5 +33,11 @@
     "mssql": "^10.0.2",
     "nodemon": "^3.0.3",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
   }
 }
