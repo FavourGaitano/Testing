@@ -1,0 +1,23 @@
+POST http://localhost:4001/auth
+Content-Type: application/json
+
+{
+    "email": "gaitano@thejitu.com",
+    "password": "123456"
+
+}
+
+####
+PUT http://localhost:3001/auth/reset_pwd
+Content-Type: application/json
+
+{
+    "email": "jameskariuki@gmail.com",
+    "password": "1234567890"
+
+}
+
+####
+POST http://localhost:3001/auth/checkdetails
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyZDZiMzg1LTA0NzYtNGUwOS1iNzZkLWU4YWM4N2NhNWVkNiIsImVtYWlsIjoiZmF2b3VyYnV5YW56aUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDg0NDYyNTcsImV4cCI6MTcwODcwNTQ1N30.xuD6Usk0yCUu_epktst3Wbuw-BfdJqRiobs8G_MeDsw

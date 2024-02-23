@@ -1,0 +1,45 @@
+### CREATE USER
+
+POST http://localhost:4001/users
+Content-Type: application/json
+
+{
+    "name": "Pascal Gaitano",
+    "email": "andabwa@thejitu.com",
+    "password": "123456",
+    "role": "admin",
+    "cohort": "22"
+    
+}
+
+###GET ALL USERS
+GET http://localhost:4001/users
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1Mjc2MDlhLWFmOTMtNDM1ZS04Y2MyLTY5ODlmODdjMDIxZSIsImVtYWlsIjoiZ2FpdGFub0B0aGVqaXR1LmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NjkwMDA0LCJleHAiOjE3MDg5NDkyMDR9.NgLHPGbYOamuCi3VyQnMM5FGZGbuaQQ1yrH2AFtew-g
+
+###GET USER BY ID
+GET http://localhost:4001/users/cf6caa8b-faeb-4a5d-a198-1bade928f67b
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1Mjc2MDlhLWFmOTMtNDM1ZS04Y2MyLTY5ODlmODdjMDIxZSIsImVtYWlsIjoiZ2FpdGFub0B0aGVqaXR1LmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NjkwMDA0LCJleHAiOjE3MDg5NDkyMDR9.NgLHPGbYOamuCi3VyQnMM5FGZGbuaQQ1yrH2AFtew-g
+
+
+###UPDATE USER
+PUT http://localhost:4001/users/b2ec06de-da6d-4a55-a562-b6abd7b07e06
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1Mjc2MDlhLWFmOTMtNDM1ZS04Y2MyLTY5ODlmODdjMDIxZSIsImVtYWlsIjoiZ2FpdGFub0B0aGVqaXR1LmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NjkwMDA0LCJleHAiOjE3MDg5NDkyMDR9.NgLHPGbYOamuCi3VyQnMM5FGZGbuaQQ1yrH2AFtew-g
+
+
+{
+    "name": "Pascal Gaitano A",
+    "email": "andabwa@thejitu.com",
+    "password": "123456",
+    "role": "admin",
+    "cohort": "22"
+    
+}
+
+###DELETE USER
+DELETE http://localhost:4001/users/cf6caa8b-faeb-4a5d-a198-1bade928f67b
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1Mjc2MDlhLWFmOTMtNDM1ZS04Y2MyLTY5ODlmODdjMDIxZSIsImVtYWlsIjoiZ2FpdGFub0B0aGVqaXR1LmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA4NjkwMDA0LCJleHAiOjE3MDg5NDkyMDR9.NgLHPGbYOamuCi3VyQnMM5FGZGbuaQQ1yrH2AFtew-g
+
