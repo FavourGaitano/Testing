@@ -7,7 +7,7 @@ import { sqlConfig } from '../Config/sql.Config';
 import Connection from '../DbHelper/dbhelper';
 import { registerUserSchema } from '../Validators/users.validators';
 
-const dbhelper = new Connection
+// const dbhelper = new Connection
 
 export const createUser = async(req: Request, res: Response)=>{
     try {
@@ -71,7 +71,7 @@ export const getAllUsers = async(req:Request, res: Response)=>{
     //     })
     // }
 
-        let users = (await dbhelper.execute("getAllUsers")).recordset
+        let users = (await Connection.execute("getAllUsers")).recordset
         
 
         if(users.length > 0){
@@ -97,7 +97,7 @@ export const getOneUser = async (req: Request, res: Response) => {
     try {
       const id = req.params.user_id;
       console.log("User ID:", id);
-      let user = (await dbhelper.execute("getOneUser", { user_id: id })).recordset;
+      let user = (await Connection.execute("getOneUser", { user_id: id })).recordset;
   
       return res.json({ user });
     } catch (error) {
@@ -121,7 +121,7 @@ export const updateUser = async (req: Request, res: Response) => {
       const hashed_pwd = await bcrypt.hash(password, 5)
 
 
-      let user = await (dbhelper.execute("updateUser", { user_id:id, name, email, password:hashed_pwd, cohort}));
+      let user = await (Connection.execute("updateUser", { user_id:id, name, email, password:hashed_pwd, cohort}));
   
       return res.json({ 
         
@@ -142,7 +142,7 @@ export const updateUser = async (req: Request, res: Response) => {
         try {
           const id = req.params.user_id;
           console.log("User ID:", id);
-          let user = await dbhelper.execute("deleteUser", { user_id: id });
+          let user = await Connection.execute("deleteUser", { user_id: id });
       
           return res.json({  message: "User deleted successfully" });
         } catch (error) {

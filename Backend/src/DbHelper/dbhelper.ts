@@ -1,48 +1,30 @@
 import mssql from 'mssql'
-import { sqlConfig } from '../config/sql.config'
+import { sqlConfig } from '../Config/sql.Config'
 
 
 export default class Connection{
 
-    private pool: Promise <mssql.ConnectionPool>
+    static async query(query:string){
+        const pool = mssql.connect(sqlConfig) as Promise <mssql.ConnectionPool>
 
-    constructor(){
-        this.pool = this.getConnection()
-    }
-
-    getConnection(): Promise<mssql.ConnectionPool>{
-        const pool = mssql.connect(sqlConfig) as Promise<mssql.ConnectionPool>;
-
-        return pool
-    }
-
-    createRequest(request: mssql.Request, data:{[c:string | number]:string | number}){
-        const keys = Object.keys(data)
-
-        keys.map((keyName)=>{
-            const keyValue = data[keyName]
-            request.input(keyName, keyValue)
-        })
+        let request = ((await pool).request().query(query))
 
         return request
     }
 
-    async execute(procedureName: string, data:{[c:string | number]: string| number} = {}){
-        let pool = await this.pool
+    static async execute(procedureName: string, data:{[c:string | number]: string| number} = {}){
+        const pool = mssql.connect(sqlConfig) as Promise <mssql.ConnectionPool>
 
-        let request = (await pool.request()) as mssql.Request
+        let request = ((await pool).request()) as mssql.Request
 
-        request = this.createRequest(request, data)
+        for(let key in data){
+            request.input(key, data[key])
+        }
 
         const result = await request.execute(procedureName)
 
         return result
     }
 
-    async query(query:string){
-        const result = (await this.pool).request().query(query)
-
-        return result
-    }
 
 }
